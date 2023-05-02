@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 
 
-export default function FifthCard() { 
+export default function WriteReview() { 
   const [title, setTitle] = useState(''); 
   const [review, setReview] = useState(''); 
   const [rating, setRating] = useState(0);
