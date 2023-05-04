@@ -15,8 +15,7 @@ export default function App() {
     const fetchData = async () => {
       setLoading(false);
        var response =await axios.post(
-        "http://192.168.1.9:3000/productdetail/app",{id},{headers:{
-          authorization: accessToken
+        "http://192.168.1.9:3000/dailypropdect/app",{nid}
         }}
       );
       console.log(response.data)

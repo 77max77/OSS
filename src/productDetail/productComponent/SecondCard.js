@@ -13,7 +13,7 @@ export default function SecondCard(props) {
         </Typography>
         <CardContent sx={{display:"flex",flexDirection:"row"}}>
          
-        {props.affects.map((item,idx) => (
+        {props.affect.map((item,idx) => (
           <BasicChips 
             affect={item}
           />

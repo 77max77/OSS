@@ -15,15 +15,23 @@ export default function ThirdCard(props) {
         <CardContent>
           <Grid container>  
             <Grid item xs>
-              <Typography  variant="h3" component="div" sx={{ml:3,mt:3,fontSize: 20  }}  gutterBottom>
-                {"하루 복용 용량"}
+              <Typography  variant="h3" component="div" sx={{ml:3,mt:3,fontSize: 30  }}  gutterBottom>
+                {"복용 용량"}
               </Typography>
             </Grid>
             
             <Grid item sx={{ml:3,mt:3,fontSize: 20 }}>
-              <BasicChips2 times={props.times.ti} ></BasicChips2>
+              <BasicChips2 times={props.eat} ></BasicChips2>
             </Grid>
+            
           </Grid>
+          <Typography  variant="h3" component="div" sx={{ml:3,mt:3,fontSize: 30  }}  gutterBottom>
+                {"주의 사항"}
+              </Typography>
+              <Card>
+            <Typography  variant="h3" component="div" sx={{ml:3,mt:3,fontSize: 20  }}  gutterBottom>
+                {props.caut}
+              </Typography></Card>
         </CardContent>
       </Card>
     );

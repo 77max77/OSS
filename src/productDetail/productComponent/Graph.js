@@ -25,15 +25,26 @@ const Chart = (props) => {
     });
   }, []);
 
-  let width = props.filledSize / 3;
+  let width = props.filledSize/5;
   if (props.filledSize <= 10) {
-    width *= 100;
-  } else if (props.filledSize <= 100) {
-    width *= 10;
-  }else if (props.filledSize >= 1000) {
-    width /= 2;
+    width *= 250;
+  } else if (props.filledSize < 1000 && props.filledSize <= 100) {
+    width *= 25;
+  }else if (props.filledSize < 10000 && props.filledSize <= 1000) {
+    width *= 2.5;
   }
-  
+  else if (props.filledSize < 100000 && props.filledSize <= 10000) {
+    width *= 0.25;
+  }
+  else if (props.filledSize < 1000000 && props.filledSize <= 100000) {
+    width *= 0.025;
+  }
+  else if (props.filledSize < 10000000 && props.filledSize <= 1000000) {
+    width *= 0.0025;
+  }
+  else if (props.filledSize < 100000000 && props.filledSize <= 10000000) {
+    width *= 0.00025;
+  }
   return (
     <div style={{ display: "flex", alignItems: "center" ,marginBottom:50,marginRight:50,marginLeft:50}}>
       <Typography sx={{ mr: 2 }}>{props.nname}</Typography>
@@ -78,7 +89,7 @@ const Chart = (props) => {
           sx={{ position: 'absolute', bottom: '-30px', left: `${width}px` }}
         >
           {props.filledSize}
-          {props.unit}
+          mcg
         </Typography>
       </div> 
     </div>

@@ -2,6 +2,7 @@ import { Card } from '@mui/material';
 import Chart from './Graph';
 import Container from '@mui/material/Container';
 import {useState} from 'react'
+import Typography from '@mui/material/Typography';
 export default function SixCard(props) {
   return (
     <Card sx={{mb: 5}}>
@@ -26,6 +27,9 @@ export default function SixCard(props) {
             setFilledSize={vitamin.filledSize}
           />
         ))}
+        <Typography fixed sx={{mt:10,mb:5,fontSize:25}}  variant="h3">
+          
+        </Typography>
       </Container>
     </Card>
   );

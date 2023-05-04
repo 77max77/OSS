@@ -59,7 +59,7 @@ export default function FirstCard(props) {
               <Typography
                 variant="h3"
                 component="div"
-                sx={{ ml: 0, mr: 5, mt: 5, fontSize: 20 }}
+                sx={{ ml: 0, mr: 5, mt: 5, mb:5, fontSize: 20 }}
                 key={props.sname1}
                 sname={props.sname1}
                 price={props.price1}
@@ -72,7 +72,7 @@ export default function FirstCard(props) {
               <Typography
                 variant="h3"
                 component="div"
-                sx={{ ml: 0, mr: 5, mt: 5, fontSize: 20 }}
+                sx={{ ml: 0, mr: 5, mt: 5, mb:5, fontSize: 20 }}
                 key={props.sname2}
                 sname={props.sname2}
                 price={props.price2}

@@ -16,7 +16,7 @@ export function BasicChips(props) {
 export function BasicChips2(props) {
     return (
       <Stack sx={{ml:3}} direction="row" spacing={1}>
-        <Chip label={props.times +"회" }  />
+        <Chip label={props.times}  />
       </Stack>
     );
   }
