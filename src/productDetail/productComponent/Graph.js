@@ -4,13 +4,12 @@ import Typography from '@mui/material/Typography';
 const Chart = (props) => {
   const maxBarSize = 500;
   const sectionSize = maxBarSize / 3;
-  //권장량 50%미만 노랑 50% 이상 파랑 100% 초록 100%이상 빨강
+
   function barColor(value1, value2) {
     if (value1 > value2) {
       return 'red';
     } else if (value1 < value2/2) {
-      return 'yellow';
-    
+      return 'yellow';  
     }else if (value1 >= value2/2 && value1 < value2) {
       return 'blue';
     }
@@ -45,9 +44,10 @@ const Chart = (props) => {
   else if (props.filledSize < 100000000 && props.filledSize <= 10000000) {
     width *= 0.00025;
   }
+  
   return (
     <div style={{ display: "flex", alignItems: "center" ,marginBottom:50,marginRight:50,marginLeft:50}}>
-      <Typography sx={{ mr: 2 }}>{props.nname}</Typography>
+      <Typography variant="body1" sx={{ mr: 2 }}>{props.nname}</Typography>
       <div 
         style={{
           width: maxBarSize + "px",
@@ -86,6 +86,7 @@ const Chart = (props) => {
           }}
         />
         <Typography
+          variant="body1"
           sx={{ position: 'absolute', bottom: '-30px', left: `${width}px` }}
         >
           {props.filledSize}
@@ -96,7 +97,7 @@ const Chart = (props) => {
   );
 };
 
-export default Chart;
+export default Chart
 /*
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, CartesianGrid } from 'recharts';
 

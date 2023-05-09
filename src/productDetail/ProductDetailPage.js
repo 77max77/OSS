@@ -7,12 +7,33 @@ import ThirdCard from './productComponent/ThirdCard'
 import SecondCard from './productComponent/SecondCard'
 import FirstCard from './productComponent/FirstCard'
 import AlignItemsList from './productComponent/ReviewList'
-import {useState} from 'react'
+import { useState, useEffect } from "react"
+import axios from "axios"
 //import ForthCard from './ForthCard'
 import FifthCard from './productComponent/FifthCard'
 import SixCard from "./productComponent/SixCard";
 import {useRef } from 'react';
-export default function ProductDetail() {
+export default function ProductDetail(props) {
+  const [ nid, setId ]= useState(sessionStorage.getItem("id"))
+  const [loading, setLoading] = useState(false);
+  const accessToken=sessionStorage.getItem("accessToken")
+  const [ res, setres ]= useState(false)
+  
+ 
+
+    
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(false);
+       var response =await axios.get(
+        "http://172.16.37.125:3000/nutritional/AAM-00100",{nid}
+      );
+      console.log(response.data)
+      setres(response.data)
+      setLoading(true);
+    };
+    fetchData();
+  }, []);
 
   const [productInfo, setProductInfo] = useState({
     id:"https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/amx/amx22860/v/18.jpg",
@@ -92,17 +113,17 @@ export default function ProductDetail() {
   const [reviews, setReviews] = useState(productInfo.reviews)
   
   const compare=()=>{
-      if(productInfo.ihub_price>productInfo.naver_price){
-        return (parseInt(productInfo.naver_price).toLocaleString())
+      if(res.product.ihub_price>res.product.naver_price){
+        return (parseInt(res.product.naver_price).toLocaleString())
       }else{
-        return (parseInt(productInfo.iherb_price).toLocaleString())
+        return (parseInt(res.product.iherb_price).toLocaleString())
       }
   }
   const compare_link=()=>{
-    if(productInfo.ihub_price>productInfo.naver_price){
-      return (productInfo.naver_link)
+    if(res.product.ihub_price>res.product.naver_price){
+      return (res.product.naver_link)
     }else{
-      return (productInfo.iherb_link)
+      return (res.product.iherb_link)
     }
 }
 
@@ -112,27 +133,27 @@ export default function ProductDetail() {
     window.location.href ="";
   };
   return (
-    <div>
-      <Container fixed sx={{mt:5}}>
-        <Link fixed size="large"  color="#78909c">{productInfo.company}</Link>
+      <Container sx={{mt:5}}>
+      
+        <Link size="large"  color="#78909c">{res.product.company}</Link>
         -
-        <Link fixed size="large"  color="#78909c" onClick={handleReviewLinkClick}>{productInfo.name}</Link>
+        <Link size="large"  color="#78909c" onClick={handleReviewLinkClick}>{res.product.name}</Link>
         <FirstCard 
           pimage ={productInfo.id}
-          pname ={productInfo.name}
-          pform ={productInfo.company}
-          prating ={productInfo.rating}
+          pname ={res.product.name}
+          pform ={res.product.company}
+          prating ={res.product.rating}
           sname1 ={productInfo.sname1}
-          price1 ={parseInt(productInfo.iherb_price).toLocaleString()}
-          plink1 ={productInfo.iherb_link}
+          price1 ={parseInt(res.product.iherb_price).toLocaleString()}
+          plink1 ={res.product.iherb_link}
           sname2 ={productInfo.sname2}
-          price2 ={parseInt(productInfo.naver_price).toLocaleString()}
-          plink2 ={productInfo.naver_link} 
+          price2 ={parseInt(res.product.naver_price).toLocaleString()}
+          plink2 ={res.product.naver_link} 
           lowPrice ={compare()}
           lowPrice_link = {compare_link()}
 
         ></FirstCard>        
-        <Typography fixed sx={{mt:10,mb:5,fontSize:25}}  variant="h3">
+        <Typography  sx={{mt:10,mb:5,fontSize:25}}  variant="h3">
         영양제 영양소 확인
         </Typography>
         <SixCard 
@@ -140,27 +161,26 @@ export default function ProductDetail() {
           sub_Vitamins={sub_nutrient}
         >
         </SixCard>
-        <Typography fixed sx={{mt:10,mb:5,fontSize:25}}  variant="h3">
+        <Typography  sx={{mt:10,mb:5,fontSize:25}}  variant="h3">
           제품 효과 
         </Typography>
         <SecondCard affect={affects}></SecondCard>
-        <Typography fixed sx={{mt:10,mb:5,fontSize:25}}  variant="h3">
+        <Typography  sx={{mt:10,mb:5,fontSize:25}}  variant="h3">
           복용법
         </Typography>
         <ThirdCard 
         eat={productInfo.daily_eating}
         caut={productInfo.caution}>
         </ThirdCard>
-        <Typography fixed sx={{mt:10,mb:5,fontSize:25}}  variant="h3">
+        <Typography  sx={{mt:10,mb:5,fontSize:25}}  variant="h3">
           제품 리뷰
         </Typography>
         <AlignItemsList reviews={reviews}></AlignItemsList> 
-        <Typography fixed sx={{mt:10,mb:5,fontSize:25}}  variant="h3">
+        <Typography  sx={{mt:10,mb:5,fontSize:25}}  variant="h3">
           리뷰 작성
         </Typography>
         <FifthCard/>
 
       </Container>
-    </div>
   );
 }

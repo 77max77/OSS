@@ -7,7 +7,6 @@ export default function SixCard(props) {
   return (
     <Card sx={{mb: 5}}>
       <Container 
-        fixed
         sx={{
           width: "100%",
           display: "flex",
@@ -21,8 +20,8 @@ export default function SixCard(props) {
           <Chart 
             key={vitamin.nname}
             filledSize={vitamin.filledSize}
-            standard={vitamin.standard}
-            unit={vitamin.unit}
+            //standard={vitamin.standard}
+            //unit={vitamin.unit}
             nname={vitamin.nname}
             setFilledSize={vitamin.filledSize}
           />

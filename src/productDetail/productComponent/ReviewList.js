@@ -27,7 +27,7 @@ export default function AlignItemsList(props) {
       {currentReviews.map((review) => (
         <ReviewCard key={review.usname} usname={review.usname} rscore={review.rscore} text={review.text} />
       ))}
-      <Container fixed sx={{ width: 390, display: 'flex', alignItems: 'center' }}>
+      <Container sx={{ width: 390, display: 'flex', alignItems: 'center' }}>
         <Stack spacing={2}>
           <Pagination count={totalPages} page={currentPage} onChange={handlePageChange} />
         </Stack>
