@@ -66,8 +66,10 @@ export default function FirstCard(props) {
                 gutterBottom
               >
                 {props.sname1}
+                <a href={props.plink1}>
                 <span style={{ marginLeft: "110px" }}></span>
                 {props.price1}원
+                </a>
               </Typography>
               <Typography
                 variant="h3"
@@ -79,12 +81,18 @@ export default function FirstCard(props) {
                 gutterBottom
               >
                 {props.sname2}
+                <a href={props.plink2}>
                 <span style={{ marginLeft: "110px" }}></span>
                 {props.price2}원
+                </a>
               </Typography>
               </Grid>
               <Grid item sx={{mt:0}}>
-              <Link variant="h3" component="div" sx={{ml:0,mr:5,mt:10,fontSize:30 }}gutterBottom>{props.lowPrice} 원</Link>
+              <a href={props.lowPrice_link}>
+  <Link variant="h3" component="div" sx={{ml:0,mr:5,mt:10,fontSize:30 }}gutterBottom>
+    {props.lowPrice} 원
+  </Link>
+</a>
               </Grid>
           </Grid>
         </Card>

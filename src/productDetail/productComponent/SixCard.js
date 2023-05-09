@@ -27,10 +27,15 @@ export default function SixCard(props) {
             setFilledSize={vitamin.filledSize}
           />
         ))}
-        <Typography fixed sx={{mt:10,mb:5,fontSize:25}}  variant="h3">
-          
-        </Typography>
       </Container>
+      <Typography sx={{ml:2,mt:2,mb:2,fontSize:20}}  variant="h3">
+       보조 영양소 성분
+      </Typography>
+      {props.sub_Vitamins.map((sub_vitamin) => (
+        <Typography sx={{ml:2,mt:2,mb:2,fontSize:15}}  variant="h3">
+        {sub_vitamin.nname}: {sub_vitamin.size}
+        </Typography>
+         ))}
     </Card>
   );
 }

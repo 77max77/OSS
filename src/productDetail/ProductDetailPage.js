@@ -72,33 +72,44 @@ export default function ProductDetail() {
     ],
   });
 
-  const vitamins = [];
-  
+  const nutrient = [];
+  const sub_nutrient =[];
   
   for (const [key, value] of Object.entries(productInfo.nutrient_info)) {
-      vitamins.push({ nname: key, filledSize: value });
+      nutrient.push({ nname: key, filledSize: value });
   }
- 
+  
+  for (const [key, value] of Object.entries(productInfo.sub_nutrient_info)) {
+    sub_nutrient.push({ nname: key, size: value });
+}
 
   const affects = Object.values(productInfo.affect);
   //const affects = Object.values(productInfo.affect)
   //const affects = productInfo.affect.map(item => item.효과);
   console.log(affects)
+  console.log(sub_nutrient)
  
   const [reviews, setReviews] = useState(productInfo.reviews)
   
   const compare=()=>{
       if(productInfo.ihub_price>productInfo.naver_price){
-        return (productInfo.naver_price)
+        return (parseInt(productInfo.naver_price).toLocaleString())
       }else{
-        return (productInfo.iherb_price)
+        return (parseInt(productInfo.iherb_price).toLocaleString())
       }
   }
+  const compare_link=()=>{
+    if(productInfo.ihub_price>productInfo.naver_price){
+      return (productInfo.naver_link)
+    }else{
+      return (productInfo.iherb_link)
+    }
+}
 
   const bottomContainerRef = useRef(null);
 
   const handleReviewLinkClick = () => {
-    window.location.href = productInfo.iherb_link;
+    window.location.href ="";
   };
   return (
     <div>
@@ -112,16 +123,22 @@ export default function ProductDetail() {
           pform ={productInfo.company}
           prating ={productInfo.rating}
           sname1 ={productInfo.sname1}
-          price1 ={productInfo.iherb_price}
+          price1 ={parseInt(productInfo.iherb_price).toLocaleString()}
+          plink1 ={productInfo.iherb_link}
           sname2 ={productInfo.sname2}
-          price2 ={productInfo.naver_price} 
+          price2 ={parseInt(productInfo.naver_price).toLocaleString()}
+          plink2 ={productInfo.naver_link} 
           lowPrice ={compare()}
+          lowPrice_link = {compare_link()}
+
         ></FirstCard>        
         <Typography fixed sx={{mt:10,mb:5,fontSize:25}}  variant="h3">
         영양제 영양소 확인
         </Typography>
-        <SixCard vitamins={vitamins}>
-          
+        <SixCard 
+          vitamins={nutrient}
+          sub_Vitamins={sub_nutrient}
+        >
         </SixCard>
         <Typography fixed sx={{mt:10,mb:5,fontSize:25}}  variant="h3">
           제품 효과 
