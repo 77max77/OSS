@@ -81,7 +81,7 @@ export default function ProductDetail() {
     const fetchData = async () => {
       setLoading(false);
        var response =await axios.get(
-        "http://172.16.36.47:3000/nutritional/AAM-00181",{nid}
+        "http://172.16.37.236:3000/nutritional/AAM-00181",{nid}
       );
       console.log(response.data)
       setres(response.data)
@@ -152,9 +152,23 @@ if(res.product.iherb_price>res.product.naver_price){
   return (res.product.iherb_link)
 }
 }
-
-
- 
+/*
+const price1=()=>{
+  if(res.product.iherb_price>500000000){
+    return ("해당 상품이 없습니다.")
+  }else{
+    return(res.product.iherb_price)
+  }
+  }
+}
+const price2=()=>{
+  if(res.product.naver_price>500000000){
+    return ("해당 상품이 없습니다.")
+  }else{
+    return(res.product.naver_price)
+  }
+}
+*/
 
   const handleReviewLinkClick = () => {
     window.location.href ="";
@@ -193,6 +207,7 @@ if(res.product.iherb_price>res.product.naver_price){
        */} 
         <FirstCard 
           //pimage ={""}
+          id ={res.product.id}
           pname ={res.product.name}
           pform ={res.product.company}
           prating ={res.product.rating}

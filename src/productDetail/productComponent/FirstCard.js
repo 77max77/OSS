@@ -21,7 +21,7 @@ export default function FirstCard(props) {
             alignItems="flex-end"
             sx={{mt:5,mr:3}}
           >
-          <OutlinedButtons></OutlinedButtons>
+          <OutlinedButtons nid={props.id}></OutlinedButtons>
           </Box>
           <Grid container>
             <Grid item  sx={{mt:0,mb:5,mr:0}}>
