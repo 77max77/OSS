@@ -175,8 +175,8 @@ export default function ProductDetail() {
         <Typography  sx={{mt:10,mb:5,fontSize:25}}  variant="h3">
           제품 리뷰
         </Typography>
-        {//<AlignItemsList reviews={reviews}></AlignItemsList> 
-        }
+        <AlignItemsList reviews={reviews}></AlignItemsList> 
+        
         <Typography  sx={{mt:10,mb:5,fontSize:25}}  variant="h3">
           리뷰 작성
         </Typography>

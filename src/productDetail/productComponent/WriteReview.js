@@ -14,7 +14,6 @@ export default function WriteReview() {
   const [submittedReviews, setSubmittedReviews] = useState([]);
 
   const handleSubmit = (event) => { event.preventDefault(); 
-    console.log('Title:', title); 
     console.log('Review:', review); 
     console.log('Rating:', rating); 
 
@@ -22,15 +21,14 @@ export default function WriteReview() {
     fetch('http://localhost:3001/review', 
     { method: 'post', headers: { 'Content-Type': 'application/json', }, 
     body: JSON.stringify({ title, review, rating }), }) 
-    .then((res) => res.text()) 
     .then((text) => console.log(text)) 
     .catch((err) => console.error(err)); 
 
     // store submitted review
-    setSubmittedReviews([...submittedReviews, { title, review, rating }]);
+    setSubmittedReviews([...submittedReviews, { review, rating }]);
 
     // clear form fields
-    setTitle('');
+
     setReview('');
     setRating(0);
   };
