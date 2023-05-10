@@ -41,7 +41,7 @@ export default function ProductDetail() {
     name:"AMINOCORE BCAA BCAA 8G + 설탕 0 + 탄수화물 0 블루 라즈베리 0.69lbs(315g)",
     company: "ALLMAX",
     rating: 3.5,
-    sname1: "ihub",
+    sname1: "iherb",
     iherb_price: "31077",
     iherb_link:
       "https://kr.iherb.com/pr/allmax-aminocore-bcaa-blue-raspberry-0-69-lbs-315-g/98036",
@@ -96,7 +96,7 @@ export default function ProductDetail() {
 
   const nutrient = [];
   const sub_nutrient =[];
-  
+  //하드코딩
   for (const [key, value] of Object.entries(productInfo.nutrient_info)) {
       nutrient.push({ nname: key, filledSize: value });
   }
@@ -106,12 +106,20 @@ export default function ProductDetail() {
 }
 
   const affects = Object.values(productInfo.affect);
-  //const affects = Object.values(productInfo.affect)
-  //const affects = productInfo.affect.map(item => item.효과);
+/*
+  for (const [key, value] of Object.entries(res.product.nutrient_info)) {
+    nutrient.push({ nname: key, filledSize: value });
+}
 
- 
+for (const [key, value] of Object.entries(res.product.sub_nutrient_info)) {
+  sub_nutrient.push({ nname: key, size: value });
+}
+
+const affects = Object.values(res.product.affect);
+ */
+
   const [reviews, setReviews] = useState(productInfo.reviews)
-  
+  //하드 코딩
   const compare=()=>{
       if(productInfo.iherb_price>productInfo.naver_price){
         return (parseInt(productInfo.naver_price).toLocaleString())
@@ -127,6 +135,23 @@ export default function ProductDetail() {
     }
 }
 
+/*
+const compare=()=>{
+  if(res.product.iherb_price>res.product.naver_price){
+    return (parseInt(res.product.naver_price).toLocaleString())
+  }else{
+    return (parseInt(res.product.iherb_price).toLocaleString())
+  }
+}
+const compare_link=()=>{
+if(res.product.iherb_price>res.product.naver_price){
+  return (res.product.naver_link)
+}else{
+  return (res.product.iherb_link)
+}
+}
+*/
+
   const bottomContainerRef = useRef(null);
 
   const handleReviewLinkClick = () => {
@@ -135,9 +160,18 @@ export default function ProductDetail() {
   return (
       <Container sx={{mt:5}}>
       
+       {//하드코딩
+        }
         <Link size="large"  color="#78909c">{productInfo.company}</Link>
         -
         <Link size="large"  color="#78909c" onClick={handleReviewLinkClick}>{productInfo.name}</Link>
+        {/*
+        <Link size="large"  color="#78909c">{res.product.company}</Link>
+        -
+        <Link size="large"  color="#78909c" onClick={handleReviewLinkClick}>{res.product.name}</Link>
+      */}
+        {//하드코딩
+        }
         <FirstCard 
           pimage ={productInfo.id}
           pname ={productInfo.name}
@@ -152,7 +186,24 @@ export default function ProductDetail() {
           lowPrice ={compare()}
           lowPrice_link = {compare_link()}
 
-        ></FirstCard>        
+        ></FirstCard>
+       { /*
+        <FirstCard 
+          pimage ={res.product.id}
+          pname ={res.product.name}
+          pform ={res.product.company}
+          prating ={res.product.rating}
+          sname1 ={productInfo.sname1}
+          price1 ={parseInt(res.product.iherb_price).toLocaleString()}
+          plink1 ={res.product.iherb_link}
+          sname2 ={productInfo.sname2}
+          price2 ={parseInt(res.product.naver_price).toLocaleString()}
+          plink2 ={res.product.naver_link} 
+          lowPrice ={compare()}
+          lowPrice_link = {compare_link()}
+
+        ></FirstCard>
+  */}  
         <Typography  sx={{mt:10,mb:5,fontSize:25}}  variant="h3">
         영양제 영양소 확인
         </Typography>
@@ -160,6 +211,7 @@ export default function ProductDetail() {
           vitamins={nutrient}
           sub_Vitamins={sub_nutrient}
         >
+          
         </SixCard>
         <Typography  sx={{mt:10,mb:5,fontSize:25}}  variant="h3">
           제품 효과 
@@ -168,10 +220,17 @@ export default function ProductDetail() {
         <Typography  sx={{mt:10,mb:5,fontSize:25}}  variant="h3">
           복용법
         </Typography>
+        {// 하드코딩
+        }
         <ThirdCard 
         eat={productInfo.daily_eating}
         caut={productInfo.caution}>
         </ThirdCard>
+        {/*
+        <ThirdCard 
+        eat={res.product.daily_eating}
+        caut={res.product.caution}>
+      </ThirdCard>*/}
         <Typography  sx={{mt:10,mb:5,fontSize:25}}  variant="h3">
           제품 리뷰
         </Typography>
