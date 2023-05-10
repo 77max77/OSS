@@ -15,6 +15,7 @@ export default function SecondCard(props) {
          
         {props.affect.map((item,idx) => (
           <BasicChips 
+            key={idx}
             affect={item}
           />
         ))}

@@ -13,7 +13,8 @@ import axios from "axios"
 import FifthCard from './productComponent/FifthCard'
 import SixCard from "./productComponent/SixCard";
 import {useRef } from 'react';
-export default function ProductDetail(props) {
+export default function ProductDetail() {
+
   const [ nid, setId ]= useState(sessionStorage.getItem("id"))
   const [loading, setLoading] = useState(false);
   const accessToken=sessionStorage.getItem("accessToken")
@@ -21,7 +22,7 @@ export default function ProductDetail(props) {
   
  
 
-    
+  /*
   useEffect(() => {
     const fetchData = async () => {
       setLoading(false);
@@ -34,7 +35,7 @@ export default function ProductDetail(props) {
     };
     fetchData();
   }, []);
-
+*/
   const [productInfo, setProductInfo] = useState({
     id:"https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/amx/amx22860/v/18.jpg",
     name:"AMINOCORE BCAA BCAA 8G + 설탕 0 + 탄수화물 0 블루 라즈베리 0.69lbs(315g)",
@@ -107,23 +108,22 @@ export default function ProductDetail(props) {
   const affects = Object.values(productInfo.affect);
   //const affects = Object.values(productInfo.affect)
   //const affects = productInfo.affect.map(item => item.효과);
-  console.log(affects)
-  console.log(sub_nutrient)
+
  
   const [reviews, setReviews] = useState(productInfo.reviews)
   
   const compare=()=>{
-      if(res.product.ihub_price>res.product.naver_price){
-        return (parseInt(res.product.naver_price).toLocaleString())
+      if(productInfo.iherb_price>productInfo.naver_price){
+        return (parseInt(productInfo.naver_price).toLocaleString())
       }else{
-        return (parseInt(res.product.iherb_price).toLocaleString())
+        return (parseInt(productInfo.iherb_price).toLocaleString())
       }
   }
   const compare_link=()=>{
-    if(res.product.ihub_price>res.product.naver_price){
-      return (res.product.naver_link)
+    if(productInfo.iherb_price>productInfo.naver_price){
+      return (productInfo.naver_link)
     }else{
-      return (res.product.iherb_link)
+      return (productInfo.iherb_link)
     }
 }
 
@@ -135,20 +135,20 @@ export default function ProductDetail(props) {
   return (
       <Container sx={{mt:5}}>
       
-        <Link size="large"  color="#78909c">{res.product.company}</Link>
+        <Link size="large"  color="#78909c">{productInfo.company}</Link>
         -
-        <Link size="large"  color="#78909c" onClick={handleReviewLinkClick}>{res.product.name}</Link>
+        <Link size="large"  color="#78909c" onClick={handleReviewLinkClick}>{productInfo.name}</Link>
         <FirstCard 
           pimage ={productInfo.id}
-          pname ={res.product.name}
-          pform ={res.product.company}
-          prating ={res.product.rating}
+          pname ={productInfo.name}
+          pform ={productInfo.company}
+          prating ={productInfo.rating}
           sname1 ={productInfo.sname1}
-          price1 ={parseInt(res.product.iherb_price).toLocaleString()}
-          plink1 ={res.product.iherb_link}
+          price1 ={parseInt(productInfo.iherb_price).toLocaleString()}
+          plink1 ={productInfo.iherb_link}
           sname2 ={productInfo.sname2}
-          price2 ={parseInt(res.product.naver_price).toLocaleString()}
-          plink2 ={res.product.naver_link} 
+          price2 ={parseInt(productInfo.naver_price).toLocaleString()}
+          plink2 ={productInfo.naver_link} 
           lowPrice ={compare()}
           lowPrice_link = {compare_link()}
 
@@ -175,7 +175,8 @@ export default function ProductDetail(props) {
         <Typography  sx={{mt:10,mb:5,fontSize:25}}  variant="h3">
           제품 리뷰
         </Typography>
-        <AlignItemsList reviews={reviews}></AlignItemsList> 
+        {//<AlignItemsList reviews={reviews}></AlignItemsList> 
+        }
         <Typography  sx={{mt:10,mb:5,fontSize:25}}  variant="h3">
           리뷰 작성
         </Typography>

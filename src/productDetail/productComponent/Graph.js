@@ -52,7 +52,7 @@ const Chart = (props) => {
         style={{
           width: maxBarSize + "px",
           height: "30px",
-          border: "2px solid black",
+          border: "3px solid black",
           borderRadius: "10px",
           position: "relative"
         }}
@@ -62,7 +62,7 @@ const Chart = (props) => {
             width: `${width}px`,
             height: "30px",
             backgroundColor: barColor(props.filledSize, props.standard),
-            borderRadius: "10px"
+            borderRadius: "6px"
           }}
         />
         <div 
