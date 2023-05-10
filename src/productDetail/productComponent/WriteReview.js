@@ -7,25 +7,25 @@ import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 
 
-export default function WriteReview() { 
-  const [title, setTitle] = useState(''); 
+export default function WriteReview(props) { 
   const [review, setReview] = useState(''); 
   const [rating, setRating] = useState(0);
   const [submittedReviews, setSubmittedReviews] = useState([]);
-
+  const nid = props.id
+  const uid = 'test'
   const handleSubmit = (event) => { event.preventDefault(); 
     console.log('Review:', review); 
     console.log('Rating:', rating); 
 
     // handle form submission here // fetch 라이브러리 사용 
-    fetch('http://localhost:3001/review', 
+    fetch('http://172.16.36.47:3000/nutritional/review', 
     { method: 'post', headers: { 'Content-Type': 'application/json', }, 
-    body: JSON.stringify({ title, review, rating }), }) 
+    body: JSON.stringify({  nid,uid, review, rating }), }) 
     .then((text) => console.log(text)) 
     .catch((err) => console.error(err)); 
 
     // store submitted review
-    setSubmittedReviews([...submittedReviews, { review, rating }]);
+    setSubmittedReviews([...submittedReviews, { nid,uid,rating,review }]);
 
     // clear form fields
 

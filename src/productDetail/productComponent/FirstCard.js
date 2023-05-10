@@ -25,11 +25,13 @@ export default function FirstCard(props) {
           </Box>
           <Grid container>
             <Grid item  sx={{mt:0,mb:5,mr:0}}>
-              <CardMedia 
+             {/* <CardMedia 
               sx={{ml:5,mr:2, height: 400,width:200 }}
               image={props.pimage}
               />
+              */}
             </Grid >
+            
             <Card sx={{mt:0,mb:5,height: 400,width:400}}>
             <Grid xs item  sx={{mt:1,ml:0,mr:0}}>
               <CardActions sx={{ml:1,mb:2}} >
@@ -67,7 +69,7 @@ export default function FirstCard(props) {
               >
                 {props.sname1}
                 <a href={props.plink1}>
-                <span style={{ marginLeft: "110px" }}></span>
+                <span style={{ marginLeft: "60px" }}></span>
                 {props.price1}원
                 </a>
               </Typography>
@@ -82,7 +84,7 @@ export default function FirstCard(props) {
               >
                 {props.sname2}
                 <a href={props.plink2}>
-                <span style={{ marginLeft: "110px" }}></span>
+                <span style={{ marginLeft: "50px" }}></span>
                 {props.price2}원
                 </a>
               </Typography>

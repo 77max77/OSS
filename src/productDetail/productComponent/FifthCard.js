@@ -4,7 +4,7 @@ import Card from '@mui/material/Card';
 import Container from '@mui/material/Container';
 import WriteReview from './WriteReview'
 //import BasicRating from './Basicrating'
-export default function FifthCard() {
+export default function FifthCard(props) {
     return (
       <Card sx={{mb:5 }}>
         <Container fixed  sx={{
@@ -12,7 +12,7 @@ export default function FifthCard() {
             display: 'flex',
             alignItems: 'center',mb:2,mt:2
           }}>
-        <WriteReview />
+        <WriteReview id={props.id}/>
         </Container>
       </Card>
     );
