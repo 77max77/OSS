@@ -81,7 +81,7 @@ export default function ProductDetail() {
     const fetchData = async () => {
       setLoading(false);
        var response =await axios.get(
-        "http://172.16.37.236:3000/nutritional/AAM-00181",{nid}
+        "http://192.168.1.29:3000/nutritional/AAM-00181",{nid}
       );
       console.log(response.data)
       setres(response.data)
@@ -206,8 +206,9 @@ const price2=()=>{
         ></FirstCard>
        */} 
         <FirstCard 
-          //pimage ={""}
-          id ={res.product.id}
+          
+          id ={res.product.nid}
+          pimage ={"http://192.168.1.29:3000/image/"+res.product.nid+'.jpg'}
           pname ={res.product.name}
           pform ={res.product.company}
           prating ={res.product.rating}

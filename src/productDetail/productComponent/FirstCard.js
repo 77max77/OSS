@@ -25,11 +25,11 @@ export default function FirstCard(props) {
           </Box>
           <Grid container>
             <Grid item  sx={{mt:0,mb:5,mr:0}}>
-             {/* <CardMedia 
+             <CardMedia 
               sx={{ml:5,mr:2, height: 400,width:200 }}
               image={props.pimage}
               />
-              */}
+              
             </Grid >
             
             <Card sx={{mt:0,mb:5,height: 400,width:400}}>
