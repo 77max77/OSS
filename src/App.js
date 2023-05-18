@@ -1,11 +1,13 @@
 import "./style.css";
 //import {BrowserRouter,Route,Routes} from "react-router-dom"
 import ProductDetail from './productDetail/ProductDetailPage'
-
+import UserInformationChangePage from "./usersetting/userSettingPage";
 export default function App() {
 
   return(
-  <ProductDetail> </ProductDetail>
+    
+  <UserInformationChangePage></UserInformationChangePage>
+  //<ProductDetail> </ProductDetail>
   )
 }
   
