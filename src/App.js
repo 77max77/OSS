@@ -6,8 +6,8 @@ export default function App() {
 
   return(
     
-  <UserInformationChangePage></UserInformationChangePage>
-  //<ProductDetail> </ProductDetail>
+  //<UserInformationChangePage></UserInformationChangePage>
+  <ProductDetail> </ProductDetail>
   )
 }
   

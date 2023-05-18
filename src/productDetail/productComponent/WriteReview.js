@@ -6,7 +6,7 @@ import Rating from '@mui/material/Rating';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 
-
+//05.18
 export default function WriteReview(props) { 
   const [review, setReview] = useState(''); 
   const [rating, setRating] = useState(0);
@@ -36,11 +36,10 @@ export default function WriteReview(props) {
   return (
     <Container
       sx={{
-        width: "50%",
-        display: "flex",
+        width: "100%",
         flexDirection: "column",
         alignItems: "center",
-        justifyContent: "center",
+        justifyContent: "center"
       }}
     >
       <form onSubmit={handleSubmit}>
@@ -59,13 +58,13 @@ export default function WriteReview(props) {
           rows={4}
           value={review}
           onChange={(event) => setReview(event.target.value)}
-          style={{ width: 800 }}
+          style={{ width:"100%" }}
         />
         <Button
           variant="contained"
           color="primary"
           type="submit"
-          style={{ width: 800, height: 50 }}
+          style={{ width: "100%", height: 50 }}
         >
           Submit
         </Button>

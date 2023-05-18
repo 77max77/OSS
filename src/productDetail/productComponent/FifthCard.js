@@ -6,11 +6,14 @@ import WriteReview from './WriteReview'
 //import BasicRating from './Basicrating'
 export default function FifthCard(props) {
     return (
-      <Card sx={{mb:5 }}>
+      //05.18변경
+      <Card sx={{mb:5,backgroundColor: '#f5f5f5' }}>
         <Container fixed  sx={{
             width: '100%',
             display: 'flex',
-            alignItems: 'center',mb:2,mt:2
+            alignItems: 'center',
+            justifyContent: "center",
+            mb:2,mt:2
           }}>
         <WriteReview id={props.id}/>
         </Container>

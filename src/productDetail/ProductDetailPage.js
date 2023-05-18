@@ -152,23 +152,7 @@ if(res.product.iherb_price>res.product.naver_price){
   return (res.product.iherb_link)
 }
 }
-/*
-const price1=()=>{
-  if(res.product.iherb_price>500000000){
-    return ("해당 상품이 없습니다.")
-  }else{
-    return(res.product.iherb_price)
-  }
-  }
-}
-const price2=()=>{
-  if(res.product.naver_price>500000000){
-    return ("해당 상품이 없습니다.")
-  }else{
-    return(res.product.naver_price)
-  }
-}
-*/
+
 
   const handleReviewLinkClick = () => {
     window.location.href ="";

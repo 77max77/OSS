@@ -2,20 +2,13 @@ import { Card } from '@mui/material';
 import Chart from './Graph';
 import Container from '@mui/material/Container';
 import {useState} from 'react'
+import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 export default function SixCard(props) {
+  //05.18변경
   return (
-    <Card sx={{mb: 5}}>
-      <Container 
-        sx={{
-          width: "100%",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          mt: 10
-        }}
-      >
+    <Card sx={{mb: 5,backgroundColor: '#f5f5f5' }}>
+   <Grid container direction="column" alignItems="center" justifyContent="center" mt={5} sx={{ overflow: 'auto' }}>
         {props.vitamins.map((vitamin,idx) => (
           <Chart 
             key={idx}
@@ -26,7 +19,7 @@ export default function SixCard(props) {
             setFilledSize={vitamin.filledSize}
           />
         ))}
-      </Container>
+      </Grid>
       <Typography sx={{ml:2,mt:2,mb:2,fontSize:20}}  variant="h3">
        보조 영양소 성분
       </Typography>

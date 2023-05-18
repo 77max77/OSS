@@ -11,7 +11,7 @@ import {BasicChips2} from './BasicChips'
 
 export default function ThirdCard(props) {
     return (
-      <Card sx={{ minWidth: 275 }}>
+      <Card sx={{ minWidth: 275, backgroundColor: '#f5f5f5'  }}>
         <CardContent>
           <Grid container>  
             <Grid item xs>

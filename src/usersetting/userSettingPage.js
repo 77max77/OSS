@@ -1,5 +1,6 @@
 import React, { useState,useEffect } from 'react';
-import { TextField, Button, Grid, Paper, Typography } from '@material-ui/core';
+import Grid from '@mui/material/Grid';
+import { TextField, Button, Paper, Typography } from '@material-ui/core';
 import { BasicChips3 } from '../productDetail/productComponent/BasicChips';
 import SettingsApplicationsIcon from '@mui/icons-material/SettingsApplications';
 const UserInformationChangePage = () => {
@@ -13,12 +14,13 @@ const UserInformationChangePage = () => {
     const [age, setAge] = useState('');
     const [isFormComplete, setIsFormComplete] = useState(false);
 
+  
 
-  //192.168.1.8
     const handleEmailChange = (event) => {
       setEmail(event.target.value);
     };
   
+   
     const handleTallChange = (event) => {
       setTall(event.target.value);
     };
@@ -26,21 +28,22 @@ const UserInformationChangePage = () => {
     const handleWeightChange = (event) => {
       setWeight(event.target.value);
     };
-  
-   
+
   
     const handleInfoChange = () => {
       // Logic to update user information
       console.log('New information:');
+      console.log('ID:', id);
       console.log('Email:', email);
+      console.log('Username:', username);
       console.log('Tall:', tall);
       console.log('Weight:', weight);
+      console.log('Age:', age);
     };
   
     const handleWithdrawal = () => {
       // Logic to handle membership withdrawal
       console.log('Membership withdrawal');
-      alert('회원 탈퇴 완료')
     };
   
   const [userInfo,setUserInfo] =useState({ 
@@ -54,15 +57,15 @@ const UserInformationChangePage = () => {
   const [chainge, setChainge]= useState([])
   useEffect(() => {
     // Check if all fields are filled
-    setIsFormComplete(!!email && !!tall && !!weight);
-  }, [email, tall, weight]);
+    setIsFormComplete(!!email || !!tall || !!weight);
+  }, [id, email, username, tall, weight, age]);
 
     /*  
   useEffect(() => {
     const fetchData = async () => {
       setLoading(false);
        var response =await axios.get(
-        "http://172.16.37.125:3000/nutritional/AAM-00100",{id}
+        "http://172.16.37.125:3000/nutritional/AAM-00100",{nid}
       );
       console.log(response.data)
       setres(response.data)
@@ -97,93 +100,84 @@ const UserInformationChangePage = () => {
 
   return (
     
-      <Grid container spacing={5}  >
-        <Grid item xs={12} sm={4}>
-          <Paper style={{ padding: '10px' }}>
+      <Grid display="flex" alignItems="center" justifyContent="center" container spacing={5}  >
+        <Grid item >
+          <Paper style={{ width:"100%", padding: '10px' }}>
             <Typography  variant="h6"><SettingsApplicationsIcon sx={{fontSize:50}}/>사용자 설정</Typography>
             <Grid container spacing={2} style={{ marginTop: '10px' }}>
-              <Grid item xs={1} >
+              <Grid item xs={3} style={{ marginTop: '-1px' }} >
                 <Typography>아이디</Typography>
               </Grid>
-              <Grid item xs={3} >
                 <BasicChips3 info={userInfo.id}/>
-              </Grid>
-              <Grid item xs={8}>
-             
-              </Grid>
             </Grid>
             <Grid container spacing={2} style={{ marginTop: '10px' }}>
-              <Grid item xs={1}>
+              <Grid item xs={3} style={{ marginTop: '10px' }}>
                 <Typography>이메일</Typography>
               </Grid>
-              <Grid item xs={3} >
-              <BasicChips3 info={userInfo.email}/>
-              </Grid>
-              <Grid item xs={8}>
-                <TextField
+              <Grid item xs={8} >
+          
+              <TextField
                   label="Email"
                   fullWidth
-                  value={email}
+                  value={userInfo.email}
                   onChange={handleEmailChange}
-              
                 />
               </Grid>
+              
+               
             </Grid>
             <Grid container spacing={2} style={{ marginTop: '10px' }}>
-              <Grid item xs={1}>
+              <Grid item xs={3} style={{ marginTop: '6px' }}>
                 <Typography>닉네임</Typography>
               </Grid>
-              <Grid item xs={3} >
+              <Grid item xs={8} >
               <BasicChips3 info={userInfo.username}/>
               </Grid>
-              <Grid item xs={8}>
-                
-              </Grid>
+        
             </Grid>
             <Grid container spacing={2} style={{ marginTop: '10px' }}>
-              <Grid item xs={1} >
+              <Grid item xs={3} style={{ marginTop: '10px' }}>
                 <Typography>키</Typography>
               </Grid>
-              <Grid item xs={3} >
-              <BasicChips3 info={userInfo.tall}/>
-              </Grid>
-              <Grid item xs={8}>
-                <TextField
+              <Grid item xs={8} >
+              
+              <TextField
                   label="Tall"
                   fullWidth
-                  value={tall}
+                  value={userInfo.tall}
                   onChange={handleTallChange}
                 
                 />
               </Grid>
+          
+               
+              
             </Grid>
             <Grid container spacing={2} style={{ marginTop: '10px' }}>
-              <Grid item xs={1}>
+              <Grid item xs={3} style={{ marginTop: '10px' }}>
                 <Typography>몸무게</Typography>
               </Grid>
-              <Grid item xs={3} >
-              <BasicChips3 info={userInfo.weight}/>
-              </Grid>
-              <Grid item xs={8}>
-                <TextField
+              <Grid item xs={8}  >
+             
+              <TextField
                   label="Weight"
                   fullWidth
-                  value={weight}
+                  value={userInfo.weight}
                   onChange={handleWeightChange}
-                 
                 />
               </Grid>
+             
+                
+             
             </Grid>
             <Grid container spacing={2} style={{ marginTop: '10px' }}>
-              <Grid item xs={1}>
+              <Grid item xs={3} style={{ marginTop: '5px' }}>
                 <Typography>나이</Typography>
               </Grid>
-              <Grid item xs={3} >
+              <Grid item xs={8} >
               <BasicChips3 info={userInfo.age}/>
               </Grid>
-              <Grid item xs={8}>
-                
-              </Grid>
+              
             </Grid>
             <Button
           variant="contained"

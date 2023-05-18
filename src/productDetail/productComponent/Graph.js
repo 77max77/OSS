@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import Typography from '@mui/material/Typography';
+import { Box } from '@mui/material';
 
 const Chart = (props) => {
   const maxBarSize = 500;
@@ -44,13 +45,15 @@ const Chart = (props) => {
   else if (props.filledSize < 100000000 && props.filledSize <= 10000000) {
     width *= 0.00025;
   }
-  
+  //05.18변경
   return (
-    <div style={{ display: "flex", alignItems: "center" ,marginBottom:50,marginRight:50,marginLeft:50}}>
-      <Typography variant="body1" sx={{ mr: 2 }}>{props.nname}</Typography>
+    
+    <div style={{ width:'100%',marginBottom:50,marginRight:20,marginLeft:20  }}>
+      <span style={{ marginRight: 2 }}>{props.nname}</span>
       <div 
         style={{
           width: maxBarSize + "px",
+          
           height: "30px",
           border: "3px solid black",
           borderRadius: "10px",
@@ -59,14 +62,16 @@ const Chart = (props) => {
       >
         <div 
           style={{
+            position: "absolute",
             width: `${width}px`,
             height: "30px",
             backgroundColor: barColor(props.filledSize, props.standard),
-            borderRadius: "6px"
+            borderRadius: "7px"
           }}
         />
         <div 
           style={{
+            
             position: "absolute",
             top: 0,
             left: sectionSize + "px",
@@ -77,6 +82,7 @@ const Chart = (props) => {
         />
         <div 
           style={{
+            display:"flex",
             position: "absolute",
             top: 0,
             left: sectionSize * 2 + "px",
@@ -85,13 +91,12 @@ const Chart = (props) => {
             backgroundColor: "black"
           }}
         />
-        <Typography
-          variant="body1"
-          sx={{ position: 'absolute', bottom: '-30px', left: `${width}px` }}
+        <span
+          style={{display:"flex", position: 'absolute', bottom: '-30px', left: `${width}px` }}
         >
           {props.filledSize}
           mcg
-        </Typography>
+        </span>
       </div> 
     </div>
   );

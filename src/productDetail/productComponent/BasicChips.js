@@ -20,9 +20,10 @@ export function BasicChips2(props) {
       </Stack>
     );
   }
+  //05.18추가
   export function BasicChips3(props) {
     return (
-      <Stack sx={{ml:3}} direction="row" spacing={1}>
+      <Stack sx={{ml:0}} direction="row" spacing={1}>
         <Chip label={props.info}  />
       </Stack>
     );

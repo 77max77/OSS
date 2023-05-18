@@ -7,7 +7,7 @@ import {useState} from 'react'
 export default function SecondCard(props) {
  
     return (
-      <Card> 
+      <Card sx={{ backgroundColor: '#f5f5f5'}}> 
         <Typography variant="h3" component="div" sx={{ml:3,mt:3,fontSize: 20 }}  gutterBottom>
           복용효과
         </Typography>
